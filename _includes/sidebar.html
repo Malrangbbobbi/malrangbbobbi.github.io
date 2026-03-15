@@ -30,6 +30,9 @@
   }
 </style>
 
+<!-- 사이드바 토글 버튼 -->
+<button id="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+
 <aside
   aria-label="Sidebar"
   id="sidebar"
@@ -134,5 +137,40 @@
     {% endfor %}
   </div>
   <!-- .sidebar-bottom -->
+
+    <style>
+    #sidebar-toggle {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 9999;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    #sidebar {
+      transition: transform 0.3s ease;
+    }
+    #sidebar.collapsed {
+      transform: translateX(-100%);
+    }
+    #sidebar.collapsed ~ #main-wrapper {
+      margin-left: 0 !important;
+    }
+  </style>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const btn = document.getElementById('sidebar-toggle');
+      sidebar.classList.toggle('collapsed');
+      btn.textContent = sidebar.classList.contains('collapsed') ? '▶' : '☰';
+    }
+  </script>
+
 </aside>
 <!-- #sidebar -->
