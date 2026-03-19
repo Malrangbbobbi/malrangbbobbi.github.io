@@ -204,7 +204,7 @@ $$I(1) = 0$$
 
 $$I(x,\ y) = I(x) + I(y)$$
 
-Condition 3 is the key constraint. If two events are independent, their probabilities multiply — but we want their information to add. The only function that converts multiplication into addition is the logarithm. Combining with Condition 1 gives us the negative log:
+Condition 3 is the key constraint. If two events are independent, their probabilities multiply — but we want their information to add. The only function that converts multiplication into addition is the logarithm. Combining with Condition 1 gives us the negative log
 
 $$\boxed{I(x) = -\log P(x)}$$
 
