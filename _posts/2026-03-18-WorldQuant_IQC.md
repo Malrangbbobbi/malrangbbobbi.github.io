@@ -1,5 +1,5 @@
 ---
-title: "WorldQuant IQC — A Korean Winner's Honest Reflection"
+title: "WorldQuant IQC — What I Learned Placing 2nd in Korea"
 date: 2026-03-18 09:00:00 +0900
 categories: [quant, competition]
 tags: [worldquant, iqc, alpha, brain, quant, competition, is-os, overfitting]
