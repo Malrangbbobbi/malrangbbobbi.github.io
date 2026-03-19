@@ -72,31 +72,7 @@ More than trying to build a "good alpha" right away, **understanding what each p
 
 ---
 
-## Strategy 1 — Understand the IS/OS Structure First
-
-IQC scores are evaluated on two dimensions: **IS (In-Sample)** and **OS (Out-of-Sample)**.
-
-If you think of the period used to train an alpha as the train window and the period used to validate it as the test window, the IS score shown during the competition is calculated over the IS period. OS is evaluated over a separate holdout window and is only revealed after submission.
-
-A high IS score does not guarantee a high OS score. Optimizing purely for IS is a risky approach.
-
-When OS scores are released in mid-May, you need to adjust your strategy based on where you stand.
-
-### High IS, Low OS → "Volume Strategy"
-
-The model is likely overfitting, and your ranking is probably lower than you'd like.
-
-Rather than changing direction, the more realistic play is to **aggressively generate more alphas**. Explore a wider range of factors and try to win on volume. If you're already behind, reversing that with quality alone is difficult.
-
-### Low IS, High OS → "Precision Strategy"
-
-Your strategy direction is sound and the model is generalizing well.
-
-In this case, do the opposite — **reduce your submission count** and focus on high-quality alphas. Forcing more submissions at this stage can actually hurt your score.
-
----
-
-## Strategy 2 — The Thinking Process Behind Building an Alpha
+## Strategy 1 — The Thinking Process Behind Building an Alpha
 
 When I built alphas, I didn't start by asking "which indicator should I use?" I started by asking **"why would this data have any relationship with future returns?"**
 
@@ -108,7 +84,7 @@ When you first start building alphas, there's a strong temptation to make them c
 
 ---
 
-## Strategy 3 — Know Your Data Thoroughly
+## Strategy 2 — Know Your Data Thoroughly
 
 The Brain platform provides a wide variety of data fields, and each one has its own characteristics. An approach of "I used this field and the IS score looked good" won't hold up for long.
 
@@ -121,7 +97,7 @@ Taking the time to properly understand data before rushing to use it — I belie
 
 ---
 
-## Strategy 4 — A Practical Checklist for Catching Overfitting
+## Strategy 3 — A Practical Checklist for Catching Overfitting
 
 A good IS score doesn't mean a good alpha. I went through the following checks every time.
 
