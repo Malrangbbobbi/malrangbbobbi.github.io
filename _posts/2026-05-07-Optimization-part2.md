@@ -1,7 +1,7 @@
 ---
 title: "Deep Learning Optimization Part 2: Backpropagation, Gradient Descent, and Modern Optimizers"
 date: 2026-03-26 09:00:00 +0900
-categories: [optimization, deep-learning]
+categories: [AI, deep-learning]
 tags: [optimization, backpropagation, gradient-descent, sgd, momentum, adam, skip-connection, resnet]
 ---
 

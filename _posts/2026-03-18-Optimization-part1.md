@@ -1,7 +1,7 @@
 ---
 title: "Deep Learning Optimization Part 1: From Information Theory to Cross-Entropy Loss"
 date: 2026-03-18 09:00:00 +0900
-categories: [optimization, deep-learning]
+categories: [AI, deep-learning]
 tags: [optimization, cross-entropy, information-theory, kl-divergence, loss-function, mle, entropy]
 ---
 

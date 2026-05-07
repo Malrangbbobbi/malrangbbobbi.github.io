@@ -10,7 +10,7 @@ layout: page
 {% assign group_index = 0 %}
 {% assign sort_categories = site.categories | sort %}
 
-{% assign icon_map = "macro:📈,quant:🔢,optimization:⚙️,ai:🤖,deep-learning:🧠,competition:🏆,fomc:🏦,finance:💼" | split: "," %}
+{% assign icon_map = "macro:📈,quant:🔢,AI:🤖,deep-learning:🧠,competition:🏆,fomc:🏦,finance:💼" | split: "," %}
 
 <style>
   .cat-grid {
@@ -21,9 +21,9 @@ layout: page
   }
 
   .cat-card {
-    border-top: 3px solid #378ADD;
     background: var(--card-bg);
     border: 1px solid var(--card-border-color);
+    border-top: 3px solid #378ADD;
     border-radius: 12px;
     padding: 1.25rem 1.4rem;
     text-decoration: none;
@@ -46,6 +46,7 @@ layout: page
     font-weight: 600;
     color: var(--heading-color);
     margin-bottom: 0.2rem;
+    text-transform: capitalize;
   }
 
   .cat-card-meta {
@@ -63,7 +64,7 @@ layout: page
     background: #E6F1FB;
     color: #185FA5;
     border: none;
-}
+  }
 </style>
 
 <div class="cat-grid">
