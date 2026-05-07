@@ -45,22 +45,23 @@ Every set of model parameters $\theta$ maps to a scalar loss value $\mathcal{L}(
 <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" style="max-width:680px; width:100%;">
   <rect width="680" height="260" fill="none"/>
 
-  <!-- Left: smooth landscape (ResNet-like) -->
+  <!-- Left: smooth landscape -->
   <rect x="20" y="10" width="300" height="220" rx="10" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
   <text x="170" y="30" text-anchor="middle" font-size="12" font-weight="600" fill="#8b949e">Smooth Landscape</text>
 
-  <!-- Smooth curve -->
-  <path d="M40,180 Q90,160 120,120 Q150,80 170,55 Q190,80 220,120 Q250,160 280,180"
+  <!-- U자형 계곡 곡선 (minimum이 아래) -->
+  <path d="M40,50 Q90,70 120,110 Q150,160 170,190 Q190,160 220,110 Q250,70 280,50"
     fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M40,180 Q90,160 120,120 Q150,80 170,55 Q190,80 220,120 Q250,160 280,180 L280,220 L40,220 Z"
+  <path d="M40,50 Q90,70 120,110 Q150,160 170,190 Q190,160 220,110 Q250,70 280,50 L280,210 L40,210 Z"
     fill="#1D9E75" fill-opacity="0.08"/>
 
-  <!-- Global min marker -->
-  <circle cx="170" cy="55" r="6" fill="#1D9E75"/>
-  <text x="170" y="46" text-anchor="middle" font-size="10" fill="#1D9E75">Global Min</text>
+  <!-- Global Min은 계곡 바닥 (y값 큰 아래쪽) -->
+  <circle cx="170" cy="190" r="6" fill="#1D9E75"/>
+  <text x="170" y="181" text-anchor="middle" font-size="10" fill="#1D9E75">Global Min</text>
 
-  <!-- Path down -->
-  <polyline points="80,165 105,140 130,115 150,88 165,62" fill="none" stroke="#EF9F27" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ap1)"/>
+  <!-- 내려가는 경로 (y값 증가 = 화면에서 아래로) -->
+  <polyline points="60,58 80,78 105,108 135,148 158,178 168,188"
+    fill="none" stroke="#EF9F27" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ap1)"/>
 
   <text x="170" y="215" text-anchor="middle" font-size="10" fill="#8b949e">Easy to navigate — one clear minimum</text>
 
@@ -68,75 +69,34 @@ Every set of model parameters $\theta$ maps to a scalar loss value $\mathcal{L}(
   <rect x="360" y="10" width="300" height="220" rx="10" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
   <text x="510" y="30" text-anchor="middle" font-size="12" font-weight="600" fill="#8b949e">Rugged Landscape</text>
 
-  <!-- Rugged curve -->
-  <path d="M380,180 Q395,165 410,150 Q420,130 430,155 Q440,170 455,140 Q465,110 480,130 Q490,145 505,120 Q515,95 530,60 Q545,95 555,120 Q565,140 580,130 Q595,145 610,160 Q620,170 630,180"
+  <!-- 울퉁불퉁한 곡선 — 계곡들이 아래쪽, 봉우리들이 위쪽 -->
+  <path d="M380,50 Q395,55 410,75 Q422,140 430,145 Q440,70 455,85 Q465,145 475,150 Q485,70 500,80 Q512,180 525,185 Q540,80 555,100 Q570,60 590,55 Q610,50 630,50"
     fill="none" stroke="#E24B4A" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M380,180 Q395,165 410,150 Q420,130 430,155 Q440,170 455,140 Q465,110 480,130 Q490,145 505,120 Q515,95 530,60 Q545,95 555,120 Q565,140 580,130 Q595,145 610,160 Q620,170 630,180 L630,220 L380,220 Z"
+  <path d="M380,50 Q395,55 410,75 Q422,140 430,145 Q440,70 455,85 Q465,145 475,150 Q485,70 500,80 Q512,180 525,185 Q540,80 555,100 Q570,60 590,55 Q610,50 630,50 L630,210 L380,210 Z"
     fill="#E24B4A" fill-opacity="0.06"/>
 
-  <!-- Local min markers -->
-  <circle cx="430" cy="155" r="5" fill="#EF9F27"/>
-  <text x="430" y="146" text-anchor="middle" font-size="9" fill="#EF9F27">Local</text>
+  <!-- Local min — 얕은 계곡들 (y=145, y=150) -->
+  <circle cx="430" cy="145" r="5" fill="#EF9F27"/>
+  <text x="430" y="136" text-anchor="middle" font-size="9" fill="#EF9F27">Local</text>
 
-  <circle cx="480" cy="130" r="5" fill="#EF9F27"/>
-  <text x="480" y="121" text-anchor="middle" font-size="9" fill="#EF9F27">Local</text>
+  <circle cx="475" cy="150" r="5" fill="#EF9F27"/>
+  <text x="475" y="141" text-anchor="middle" font-size="9" fill="#EF9F27">Local</text>
 
-  <!-- Global min -->
-  <circle cx="530" cy="60" r="6" fill="#1D9E75"/>
-  <text x="530" y="51" text-anchor="middle" font-size="10" fill="#1D9E75">Global Min</text>
+  <!-- Global min — 가장 깊은 계곡 (y=185) -->
+  <circle cx="525" cy="185" r="6" fill="#1D9E75"/>
+  <text x="525" y="176" text-anchor="middle" font-size="10" fill="#1D9E75">Global Min</text>
 
-  <!-- Stuck path -->
-  <polyline points="400,175 415,158 425,150 430,155" fill="none" stroke="#E24B4A" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <text x="400" y="200" text-anchor="start" font-size="10" fill="#E24B4A">Optimizer gets stuck</text>
-  <text x="400" y="213" text-anchor="start" font-size="10" fill="#E24B4A">in local minimum</text>
+  <!-- Optimizer가 local min에 갇히는 경로 -->
+  <polyline points="388,55 398,80 410,120 420,140 430,145"
+    fill="none" stroke="#E24B4A" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="385" y="195" text-anchor="start" font-size="10" fill="#E24B4A">Optimizer gets stuck</text>
+  <text x="385" y="208" text-anchor="start" font-size="10" fill="#E24B4A">in local minimum</text>
 
   <defs>
     <marker id="ap1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
       <path d="M2 1L8 5L2 9" fill="none" stroke="#EF9F27" stroke-width="1.5" stroke-linecap="round"/>
     </marker>
   </defs>
-</svg>
-<figcaption style="font-size:0.85rem; color:#888; margin-top:0.5rem;">
-  Figure 1. Two types of loss landscapes. A smooth surface (left) has one clear global minimum that gradient-based methods can find reliably. A rugged surface (right) — typical of deep networks — has many local minima that can trap the optimizer.
-</figcaption>
-</figure>
-
-### Local Minima and the Real Problem
-
-In a simple convex loss surface, gradient descent always finds the global minimum. But real neural networks — especially deep ones — produce highly non-convex landscapes. The optimizer can get trapped in a **local minimum**: a point where the loss is lower than all nearby points, but not lower than every possible point.
-
-For a stock prediction model, this is the difference between a model that works reasonably well on the training distribution and one that has actually captured the underlying market dynamics. Local minima can look good on paper and fail badly out-of-sample.
-
-The situation is further complicated by two other problematic regions:
-
-**Saddle points** — where the gradient is zero but the point is neither a maximum nor a minimum. These are actually more common than local minima in high-dimensional spaces, and they're particularly dangerous because gradients vanish near them, slowing training to a crawl.
-
-**Plateaus** — flat regions where the gradient is near zero everywhere. The optimizer has no signal about which direction to move.
-
-<figure style="text-align:center; margin: 2rem 0;">
-<svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" style="max-width:680px; width:100%;">
-  <rect width="680" height="200" fill="none"/>
-
-  <!-- Three panels -->
-  <!-- Local minimum -->
-  <rect x="20" y="10" width="190" height="160" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
-  <text x="115" y="28" text-anchor="middle" font-size="11" font-weight="600" fill="#8b949e">Local Minimum</text>
-  <path d="M40,130 Q80,80 115,60 Q150,80 190,130" fill="none" stroke="#EF9F27" stroke-width="2"/>
-  <circle cx="115" cy="60" r="5" fill="#EF9F27"/>
-  <text x="115" y="150" text-anchor="middle" font-size="10" fill="#EF9F27">Gradient = 0, but not global</text>
-
-  <!-- Saddle point -->
-  <rect x="245" y="10" width="190" height="160" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
-  <text x="340" y="28" text-anchor="middle" font-size="11" font-weight="600" fill="#8b949e">Saddle Point</text>
-  <path d="M265,50 Q300,100 340,100 Q380,100 415,50" fill="none" stroke="#7F77DD" stroke-width="2"/>
-  <circle cx="340" cy="100" r="5" fill="#7F77DD"/>
-  <text x="340" y="150" text-anchor="middle" font-size="10" fill="#7F77DD">Gradient = 0, training stalls</text>
-
-  <!-- Plateau -->
-  <rect x="470" y="10" width="190" height="160" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
-  <text x="565" y="28" text-anchor="middle" font-size="11" font-weight="600" fill="#8b949e">Plateau</text>
-  <path d="M490,60 Q510,130 530,140 Q565,142 600,140 Q620,130 640,60" fill="none" stroke="#E24B4A" stroke-width="2"/>
-  <text x="565" y="150" text-anchor="middle" font-size="10" fill="#E24B4A">Near-zero gradient everywhere</text>
 </svg>
 <figcaption style="font-size:0.85rem; color:#888; margin-top:0.5rem;">
   Figure 2. Three obstacles in the loss landscape: local minima (trapped at suboptimal solutions), saddle points (gradient vanishes), and plateaus (no useful gradient signal).
