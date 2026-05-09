@@ -28,10 +28,68 @@
   #sidebar .sidebar-bottom a i {
     color: #e0e0e0 !important;
   }
+
+  /* ───── 토글 버튼: 모바일에서만 표시 ───── */
+  #sidebar-toggle {
+    display: none;
+  }
+
+  @media (max-width: 849px) {
+    /* 버튼 노출 */
+    #sidebar-toggle {
+      display: block;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.65);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* 사이드바: 기본 상태는 숨김 (왼쪽으로 밀어냄) */
+    #sidebar {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      height: 100% !important;
+      z-index: 1000;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+      width: 17rem;
+    }
+
+    /* sidebar-shown 클래스가 붙으면 슬라이드 인 */
+    #sidebar.sidebar-shown {
+      transform: translateX(0);
+    }
+
+    /* 반투명 배경(클릭 시 사이드바 닫힘) */
+    #sidebar-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    #sidebar-backdrop.active {
+      display: block;
+    }
+  }
 </style>
 
-<!-- 사이드바 토글 버튼 -->
-<button id="sidebar-toggle" onclick="toggleSidebar()">&#9776;</button>
+<!-- 토글 버튼 (사이드바 바깥에 위치 — 항상 접근 가능) -->
+<button id="sidebar-toggle" aria-label="사이드바 열기">&#9776;</button>
+
+<!-- 배경 오버레이 (모바일 전용) -->
+<div id="sidebar-backdrop"></div>
 
 <aside
   aria-label="Sidebar"
@@ -84,7 +142,7 @@
     </ul>
   </nav>
 
-  <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
+  <div class="sidebar-bottom d-flex flex-wrap align-items-center w-100">
     {% unless site.theme_mode %}
       <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
         <i class="fas fa-adjust"></i>
@@ -138,39 +196,39 @@
   </div>
   <!-- .sidebar-bottom -->
 
-    <style>
-    #sidebar-toggle {
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      z-index: 9999;
-      background: rgba(0,0,0,0.6);
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      padding: 8px 14px;
-      font-size: 1.3rem;
-      cursor: pointer;
-    }
-    #sidebar {
-      transition: transform 0.3s ease;
-    }
-    #sidebar.collapsed {
-      transform: translateX(-100%);
-    }
-    #sidebar.collapsed ~ #main-wrapper {
-      margin-left: 0 !important;
-    }
-  </style>
-
-  <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      const btn = document.getElementById('sidebar-toggle');
-      sidebar.classList.toggle('collapsed');
-      btn.textContent = sidebar.classList.contains('collapsed') ? '▶' : '☰';
-    }
-  </script>
-
 </aside>
 <!-- #sidebar -->
+
+<script>
+  (function () {
+    var btn      = document.getElementById('sidebar-toggle');
+    var sidebar  = document.getElementById('sidebar');
+    var backdrop = document.getElementById('sidebar-backdrop');
+
+    function openSidebar() {
+      sidebar.classList.add('sidebar-shown');
+      backdrop.classList.add('active');
+      btn.innerHTML = '&#10005;'; /* ✕ */
+      btn.setAttribute('aria-label', '사이드바 닫기');
+    }
+
+    function closeSidebar() {
+      sidebar.classList.remove('sidebar-shown');
+      backdrop.classList.remove('active');
+      btn.innerHTML = '&#9776;'; /* ☰ */
+      btn.setAttribute('aria-label', '사이드바 열기');
+    }
+
+    btn.addEventListener('click', function () {
+      sidebar.classList.contains('sidebar-shown') ? closeSidebar() : openSidebar();
+    });
+
+    /* 오버레이 클릭 시 닫기 */
+    backdrop.addEventListener('click', closeSidebar);
+
+    /* ESC 키로도 닫기 */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeSidebar();
+    });
+  })();
+</script>
